@@ -1,5 +1,5 @@
 export default {
-    low: 'Bajo',
-    medium: 'Medio',
-    hight: 'Alto'
+  low: 'Bajo',
+  medium: 'Medio',
+  hight: 'Alto'
 };
