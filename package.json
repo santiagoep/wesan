@@ -20,6 +20,7 @@
   "homepage": "https://github.com/santiagoep/wesan#readme",
   "dependencies": {
     "bootstrap": "^4.6.0",
+    "dayjs": "^1.10.4",
     "next": "^10.0.8",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.1",
