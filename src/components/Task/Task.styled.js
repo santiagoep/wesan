@@ -17,3 +17,7 @@ export const StyledPriority = styled.span`
 export const StyledTags = styled.span`
     ${tags}
 `;
+
+export const StyledTagsContainer = styled.span`
+    display:flex;
+`;

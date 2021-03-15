@@ -5,10 +5,11 @@ import {getBgByPriority} from './priority.mixin';
 export const priority = css`
     color: ${({ theme }) => theme.colors.white};
     border-radius: 3px;
-    line-height: 32px;
     padding: 0 12px;
-    width: auto;
+    width: fit-content;
     ${getBgByPriority}
+    height: auto;
+    font-size: 12px;
 `;
 
 export const date = css`
@@ -22,4 +23,6 @@ export const tags = css`
     line-height: 16px;
     padding: 0 8px;
     max-width: 198px;
+    border-radius: 7px;
+    margin: 0 5px;
 `;
