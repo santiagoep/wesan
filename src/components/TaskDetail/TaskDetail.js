@@ -6,7 +6,7 @@ import {StyledPriority, StyledDescription, StyledTags, StyledDate} from './TaskD
 
 const TaskDetail = ({title, date, tags, priority, description, show, onClose}) => {
 
-    const dateFormatter = (date) => `${dateFormat(date, "yyyy-mm-dd")}`;
+    const dateFormatter = (date) => `${dateFormat(date, "YYYY-MM-DD")}`;
     const renderTags = () => tags.map((tag) => <StyledTags>{tag}</StyledTags>);
 
     return  (

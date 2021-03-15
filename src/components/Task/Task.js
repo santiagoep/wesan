@@ -11,7 +11,7 @@ const Task = ({title, date, tags, priority}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const dateFormatter = (date) => `${dateFormat(date, "yyyy-mm-dd")}`;
+    const dateFormatter = (date) => `${dateFormat(date, "YYYY-MM-DD")}`;
     const renderTags = () => tags.map((tag) => <StyledTags>{tag}</StyledTags>);
     return (
         <>
