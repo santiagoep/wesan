@@ -7,7 +7,10 @@ const theme = {
       warning: '#ffc107',
       info: '#17a2b8',
       light: '#343a40',
-      white: '#fff'
+      white: '#fff',
+      low: '#28a745',
+      medium: '#007bff',
+      hight:  '#dc3545'
     },
 }
 

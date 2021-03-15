@@ -1,23 +1,23 @@
 import Modal from 'react-bootstrap/Modal'
 
-import { StyledDate } from './Task.styled'
+import es from '../../config/languages/es';
+import { dateFormat } from '../../utils/dates';
+import {StyledPriority, StyledDescription, StyledTags, StyledDate} from './TaskDetail.styled';
 
 const TaskDetail = ({title, date, tags, priority, description}) => {
-    
-    // const dateFormatter = (date) => `${date.getDay()}/${date.getMonth()}/${date.getYear()}`;
     const dateFormatter = (date) => `${dateFormat(date, "yyyy-mm-dd")}`;
-    // dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
-    return  <Modal.Dialog>
+    return  (
+    <Modal.Dialog>
         <Modal.Header closeButton>
             <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <StyledPriority>{priority}</StyledPriority>
+            <StyledPriority priority={priority}>{es[priority]}</StyledPriority>
             <StyledTags>{tags}</StyledTags>
             <StyledDate>{dateFormatter(date)}</StyledDate>
             <StyledDescription>{description}</StyledDescription>
         </Modal.Body>
-    </Modal.Dialog>
+    </Modal.Dialog>)
 }
 
-export default Task;
+export default TaskDetail;
