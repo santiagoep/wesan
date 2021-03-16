@@ -1,53 +1,66 @@
 import React from 'react';
 
-import Task from '../components/Task/Task';
-import Grid from '../components/Grid/Grid';
-import Column from '../components/Column/Column';
+import Kanban from '../components/Kanban/Kanban';
 
-const HomePage = () => (
-    <>
-        <Grid>
-            <Column title="Backlog">
-                <Task
-                    title="Tarea 1"
-                    date={new Date()}
-                    tags={['Frontend', 'Cuenta de usuario']}
-                    priority='medium'
-                />
-
-            </Column>
-            <Column title="To Do"></Column>
-            <Column title="In Progress">
-                <Task
-                    title="Tarea 1"
-                    date={new Date()}
-                    tags={['Frontend', 'Cuenta de usuario']}
-                    priority='medium'
-                />
-
-            </Column>
-            <Column title="Blocked"></Column>
-            <Column title="Code Review">
-                <Task
-                    title="Tarea 1"
-                    date={new Date()}
-                    tags={['Frontend', 'Cuenta de usuario']}
-                    priority='medium'
-                />
-
-                <Task
-                    title="Tarea 1"
-                    date={new Date()}
-                    tags={['Frontend', 'Cuenta de usuario']}
-                    priority='medium'
-                />
-
-            </Column>
-            <Column title="Test"></Column>
-            <Column title="Done"></Column>
-        </Grid>
-
-    </>
+const HomePage = ({ tasks, columns }) => (
+    <Kanban tasks={tasks} columns={columns} />
 );
+
+export const getServerSideProps = () => {
+    return {
+        props: {
+            tasks: [
+                {
+                    title: 'Tarea 1',
+                    date: '2021-03-15',
+                    tags: ['Frontend', 'UI'],
+                    priority: 'hight',
+                    state: 'backlog',
+                    description: 'HAY QUE HACER UNA TAREA'
+                },
+                {
+                    title: 'Tarea 2',
+                    date: '2021-03-18',
+                    tags: ['Frontend', 'UI'],
+                    priority: 'low',
+                    state: 'to-do'
+                },
+                {
+                    title: 'Tarea 3',
+                    date: '2021-03-20',
+                    tags: ['Backend'],
+                    priority: 'medium',
+                    state: 'in-progress'
+                },
+            ],
+            columns: [
+                {
+                    title: 'Backlog',
+                    id: 'backlog'
+                },
+                {
+                    title: 'To Do',
+                    id: 'to-do'
+                },
+                {
+                    title: 'In Progress',
+                    id: 'in-progress'
+                },
+                {
+                    title: 'Blocked',
+                    id: 'blocked'
+                },
+                {
+                    title: 'Code Review',
+                    id: 'code-review'
+                },
+                {
+                    title: 'Test',
+                    id: 'test'
+                }
+            ]
+        }
+    }
+}
 
 export default HomePage;

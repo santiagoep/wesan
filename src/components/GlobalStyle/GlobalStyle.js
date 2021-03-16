@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
       height: 100vh;
     }
   }
+  p {
+    padding: 0;
+    margin: 0;
+  }
 `
 
 export default GlobalStyle;

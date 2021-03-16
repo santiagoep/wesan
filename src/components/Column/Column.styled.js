@@ -13,4 +13,5 @@ export const StyledColumn = styled.div`
 export const StyledTitle = styled.p`
     font-weight: bold;
     color: ${({theme}) => theme.colors.light};
+    margin-bottom: 20px;
 `;
