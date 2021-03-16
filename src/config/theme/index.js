@@ -2,5 +2,5 @@ import lightTheme from './light';
 
 
 export default {
-    lightTheme
+  lightTheme
 }
