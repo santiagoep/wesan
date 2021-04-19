@@ -2,10 +2,12 @@ import Modal from 'react-bootstrap/Modal'
 
 import {
   StyledDate,
-  StyledTags,
+  StyledLabel,
+  StyledBlock,
   StyledPriority,
   StyledDescription,
 } from './TaskDetail.styled';
+import Tags from '../Tags/Tags';
 import es from '../../config/languages/es';
 import { dateFormat } from '../../utils/dates';
 
@@ -18,9 +20,7 @@ const TaskDetail = ({
   show,
   onClose
 }) => {
-
-  const dateFormatter = (date) => `${dateFormat(date, "YYYY-MM-DD")}`;
-  const renderTags = () => tags.map((tag) => <StyledTags>{tag}</StyledTags>);
+  const dateFormatter = (date) => dateFormat(date, "DD/MM/YYYY").toString();
 
   return (
     <Modal show={show} onHide={onClose}>
@@ -28,10 +28,22 @@ const TaskDetail = ({
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <StyledPriority priority={priority}>{es[priority]}</StyledPriority>
-        <StyledDate>Fecha de vencimiento: {dateFormatter(date)}</StyledDate>
+        <StyledBlock>
+          <StyledLabel>Prioridad:</StyledLabel>
+          <StyledPriority priority={priority}>{es[priority]}</StyledPriority>
+        </StyledBlock>
+        <StyledBlock>
+          <StyledLabel>Fecha:</StyledLabel>
+          <StyledDate>{dateFormatter(date)}</StyledDate>
+        </StyledBlock>
+        <StyledBlock>
+          <StyledLabel>Descripción:</StyledLabel>
         <StyledDescription>{description}</StyledDescription>
-        {renderTags()}
+      </StyledBlock>
+        <StyledBlock>
+          <StyledLabel>Etiquetas:</StyledLabel>
+          <Tags tags={tags} />
+        </StyledBlock>
       </Modal.Body>
     </Modal>
   )

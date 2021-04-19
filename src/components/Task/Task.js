@@ -1,36 +1,44 @@
 import React, { useState } from 'react';
 
-import Card from 'react-bootstrap/Card';
+import {
+  StyledCard,
+  StyledDate,
+  StyledPriority,
+} from './Task.styled';
+import Tags from '../Tags/Tags';
 import es from '../../config/languages/es';
 import { dateFormat } from '../../utils/dates';
 import TaskDetail from '../TaskDetail/TaskDetail';
-import { StyledDate } from '../TaskDetail/TaskDetail.styled';
-import { StyledPriority, StyledTags, StyledTagsContainer } from './Task.styled';
 
-const Task = ({ title, date, tags, priority }) => {
+const Task = ({ title, date, tags, priority, ...taskDetail }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const dateFormatter = (date) => `${dateFormat(date, "YYYY-MM-DD")}`;
 
-  const renderTags = () => tags.map((tag) => <StyledTags>{tag}</StyledTags>);
+  const dateFormatter = (date) => dateFormat(date, "DD/MM/YYYY").toString();
 
   return (
     <>
-      <Card onClick={handleShow}>
+      <StyledCard onClick={handleShow}>
+      <Tags tags={tags} />
         {title}
-        <StyledPriority priority={priority}>{es[priority]}</StyledPriority>
-        <StyledDate>Fecha de vencimiento: {dateFormatter(date)}</StyledDate>
-        <StyledTagsContainer>{renderTags()}</StyledTagsContainer>
-      </Card>
+        <StyledPriority
+          priority={priority}
+        >
+          {es[priority]}
+        </StyledPriority>
+        <StyledDate>
+          {dateFormatter(date)}
+        </StyledDate>
+      </StyledCard>
       <TaskDetail
         show={show}
-        onHide={!show}
         title={title}
         priority={priority}
         onClose={handleClose}
         tags={tags}
+        {...taskDetail}
       />
     </>
   );
